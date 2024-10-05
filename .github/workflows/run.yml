@@ -28,4 +28,4 @@ jobs:
           DATE=`date -I`
           git add *.csv
           git commit -m "Add new data points at $DATE"
-          git push origin master
+          git push origin main
