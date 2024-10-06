@@ -1,14 +1,13 @@
 package main
 
 import (
-	"bufio"
+	"encoding/csv"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"regexp"
-	"strings"
 	"time"
 )
 
@@ -19,17 +18,13 @@ func readRepoNames(path string) ([]string, error) {
 	}
 	defer file.Close()
 
-	reader := bufio.NewReader(file)
-
-	firstLine, err := reader.ReadString('\n')
+	reader := csv.NewReader(file)
+	column, err := reader.Read()
 	if err != nil {
 		return nil, err
 	}
-	firstLine = strings.TrimRight(firstLine, "\n")
 
-	_, firstLine, _ = strings.Cut(firstLine, ",")
-
-	return strings.Split(firstLine, ","), nil
+	return column[1:], nil
 }
 
 func queryPolls(repo string) (string, error) {
@@ -76,8 +71,12 @@ func main() {
 	}
 	defer f.Close()
 
-	s := strings.Join(row, ",") + "\n"
-	if _, err := f.WriteString(s); err != nil {
+	w := csv.NewWriter(f)
+	if err := w.Write(row); err != nil {
+		log.Fatalf("Unable to write data: %s", err.Error())
+	}
+	w.Flush()
+	if err := w.Error(); err != nil {
 		log.Fatalf("Unable to write data: %s", err.Error())
 	}
 }
