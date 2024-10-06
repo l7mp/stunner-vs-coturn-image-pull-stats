@@ -2,7 +2,7 @@ name: Add new data points daily
 
 on:
   schedule:
-  - cron: '0 12 * * *'
+    - cron: '0 12 * * *'
 
 jobs:
   append:
