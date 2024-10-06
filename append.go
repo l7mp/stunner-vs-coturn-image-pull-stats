@@ -27,9 +27,9 @@ func readRepoNames(path string) ([]string, error) {
 	}
 	firstLine = strings.TrimRight(firstLine, "\n")
 
-	_, firstLine, _ = strings.Cut(firstLine, ";")
+	_, firstLine, _ = strings.Cut(firstLine, ",")
 
-	return strings.Split(firstLine, ";"), nil
+	return strings.Split(firstLine, ","), nil
 }
 
 func queryPolls(repo string) (string, error) {
@@ -76,7 +76,7 @@ func main() {
 	}
 	defer f.Close()
 
-	s := strings.Join(row, ";") + "\n"
+	s := strings.Join(row, ",") + "\n"
 	if _, err := f.WriteString(s); err != nil {
 		log.Fatalf("Unable to write data: %s", err.Error())
 	}
