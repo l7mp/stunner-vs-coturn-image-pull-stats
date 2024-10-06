@@ -1,6 +1,7 @@
 name: Add new data points daily
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 12 * * *'
 
