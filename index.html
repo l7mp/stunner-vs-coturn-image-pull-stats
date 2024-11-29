@@ -64,11 +64,25 @@
                 width: 2
             }
         };
+        var iceTester = {
+            x: data.map(row => row['date'] + "T12:00"),
+            y: data.map(row => row['icetester']),
+            type: 'lines+markers',
+            name: 'l7mp/icetester',
+            marker: {
+                color: 'rgb(168,168,168)',
+                size: 10
+            },
+            line: {
+                color: 'rgb(168,168,168)',
+                width: 2
+            }
+        };
         var layout = {
             title: 'Image Pulls',
         };
         Plotly.newPlot('graph',
-            [stunnerd, stunnerGatewayOperator, stunnerAuthServer, netDebug],
+            [stunnerd, stunnerGatewayOperator, stunnerAuthServer, netDebug, iceTester],
             layout
         );
     });
