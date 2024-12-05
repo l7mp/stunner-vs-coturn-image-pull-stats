@@ -4,9 +4,95 @@
 </head>
 <body>
   <h2>Image pull statistics</h2>
-  <div id="graph" style="width:100%;height:80%;"></div>
+  <div id="daily" style="width:100%;height:80%;"></div>
+  <div id="total" style="width:100%;height:80%;"></div>
   <script>
+    function getDifferences(values) {
+	return values.slice(1).map((value, index) => value - values[index]);
+    }
     var csv_path = 'https://raw.githubusercontent.com/l7mp/image-pull-stats/refs/heads/main/pull-stats.csv';
+    // total
+    Plotly.d3.csv(csv_path, function(data) {
+        var stunnerd = {
+            x: data.map(row => row['date'] + "T12:00"),
+            y: getDifferences(data.map(row => row['stunnerd'])),
+            type: 'bar',
+            name: 'l7mp/stunnerd',
+            marker: {
+                color: 'rgb(66,133,244)',
+                size: 10
+            },
+            line: {
+                color: 'rgb(66,133,244)',
+                width: 2
+            }
+        };
+        var stunnerGatewayOperator = {
+            x: data.map(row => row['date'] + "T12:00"),
+            y: getDifferences(data.map(row => row['stunner-gateway-operator'])),
+            type: 'bar',
+            name: 'l7mp/stunner-gateway-operator',
+            marker: {
+                color: 'rgb(234,67,53)',
+                size: 10
+            },
+            line: {
+                color: 'rgb(234,67,53)',
+                width: 2
+            }
+        };
+        var stunnerAuthServer = {
+            x: data.map(row => row['date'] + "T12:00"),
+            y: getDifferences(data.map(row => row['stunner-auth-server'])),
+            type: 'bar',
+            name: 'l7mp/stunner-auth-server',
+            marker: {
+                color: 'rgb(255,188,5)',
+                size: 10
+            },
+            line: {
+                color: 'rgb(255,188,5)',
+                width: 2
+            }
+        };
+        var netDebug = {
+            x: data.map(row => row['date'] + "T12:00"),
+            y: getDifferences(data.map(row => row['net-debug'])),
+            type: 'bar',
+            name: 'l7mp/net-debug',
+            marker: {
+                color: 'rgb(52,168,83)',
+                size: 10
+            },
+            line: {
+                color: 'rgb(52,168,83)',
+                width: 2
+            }
+        };
+        var iceTester = {
+            x: data.map(row => row['date'] + "T12:00"),
+            y: getDifferences(data.map(row => row['icetester'])),
+            type: 'bar',
+            name: 'l7mp/icetester',
+            marker: {
+                color: 'rgb(168,168,168)',
+                size: 10
+            },
+            line: {
+                color: 'rgb(168,168,168)',
+                width: 2
+            }
+        };
+        var layout = {
+            title: 'Image Pulls (Daily)',
+        };
+        Plotly.newPlot('daily',
+            [stunnerd, stunnerGatewayOperator, stunnerAuthServer, netDebug, iceTester],
+            layout
+        );
+    });
+
+    // daily
     Plotly.d3.csv(csv_path, function(data) {
         var stunnerd = {
             x: data.map(row => row['date'] + "T12:00"),
@@ -79,9 +165,9 @@
             }
         };
         var layout = {
-            title: 'Image Pulls',
+            title: 'Image Pulls (Total)',
         };
-        Plotly.newPlot('graph',
+        Plotly.newPlot('total',
             [stunnerd, stunnerGatewayOperator, stunnerAuthServer, netDebug, iceTester],
             layout
         );
