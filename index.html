@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0" />
   <meta name="description" content="Image pull statistics of l7mp.io container images." />
   <title>Image pull statistics</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -242,10 +242,11 @@
     <button id="totalButton" class="tablinks" onclick="showPlot(event, 'total')">Total</button>
   </div>
 
-  <div id="daily" class="tabcontent" style="width:100%;height:80%;"></div>
-  <div id="total" class="tabcontent" style="width:100%;height:80%;"></div>
+  <div id="daily" class="tabcontent"></div>
+  <div id="total" class="tabcontent"></div>
 
   <div>More info: <a href="https://github.com/l7mp/image-pull-stats">github</a></div>
+
   <script>
     document.getElementById("dailyButton").click();
   </script>
