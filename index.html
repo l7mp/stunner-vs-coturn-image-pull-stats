@@ -9,7 +9,13 @@
   <script>
     const csv_path = 'https://raw.githubusercontent.com/l7mp/image-pull-stats/refs/heads/main/pull-stats.csv';
     const config = {responsive: true};
-
+    const colors = {
+	stunnerd: 'rgb(66,133,244)',
+	stunnerGatewayOperator: 'rgb(234,67,53)',
+	stunnerAuthServer: 'rgb(255,188,5)',
+	netDebug: 'rgb(52,168,83)',
+	icetester: 'rgb(168,168,168)',
+    }
     function getDifferences(values) {
 	return values.slice(1).map((value, index) => value - values[index]);
     }
@@ -22,11 +28,11 @@
             type: 'bar',
             name: 'l7mp/stunnerd',
             marker: {
-                color: 'rgb(66,133,244)',
+                color: colors.stunnerd,
                 size: 10
             },
             line: {
-                color: 'rgb(66,133,244)',
+                color: colors.stunnerd,
                 width: 2
             }
         };
@@ -36,11 +42,11 @@
             type: 'bar',
             name: 'l7mp/stunner-gateway-operator',
             marker: {
-                color: 'rgb(234,67,53)',
+                color: colors.stunnerGatewayOperator,
                 size: 10
             },
             line: {
-                color: 'rgb(234,67,53)',
+                color: colors.stunnerGatewayOperator,
                 width: 2
             }
         };
@@ -50,11 +56,11 @@
             type: 'bar',
             name: 'l7mp/stunner-auth-server',
             marker: {
-                color: 'rgb(255,188,5)',
+                color: colors.stunnerAuthServer,
                 size: 10
             },
             line: {
-                color: 'rgb(255,188,5)',
+                color: colors.stunnerAuthServer,
                 width: 2
             }
         };
@@ -64,11 +70,11 @@
             type: 'bar',
             name: 'l7mp/net-debug',
             marker: {
-                color: 'rgb(52,168,83)',
+                color: colors.netDebug,
                 size: 10
             },
             line: {
-                color: 'rgb(52,168,83)',
+                color: colors.netDebug,
                 width: 2
             }
         };
@@ -78,11 +84,11 @@
             type: 'bar',
             name: 'l7mp/icetester',
             marker: {
-                color: 'rgb(168,168,168)',
+                color: colors.icetester,
                 size: 10
             },
             line: {
-                color: 'rgb(168,168,168)',
+                color: colors.icetester,
                 width: 2
             }
         };
@@ -103,11 +109,11 @@
             type: 'lines+markers',
             name: 'l7mp/stunnerd',
             marker: {
-                color: 'rgb(66,133,244)',
+                color: colors.stunnerd,
                 size: 10
             },
             line: {
-                color: 'rgb(66,133,244)',
+                color: colors.stunnerd,
                 width: 2
             }
         };
@@ -117,11 +123,11 @@
             type: 'lines+markers',
             name: 'l7mp/stunner-gateway-operator',
             marker: {
-                color: 'rgb(234,67,53)',
+                color: colors.stunnerGatewayOperator,
                 size: 10
             },
             line: {
-                color: 'rgb(234,67,53)',
+                color: colors.stunnerGatewayOperator,
                 width: 2
             }
         };
@@ -131,11 +137,11 @@
             type: 'lines+markers',
             name: 'l7mp/stunner-auth-server',
             marker: {
-                color: 'rgb(255,188,5)',
+                color: colors.stunnerAuthServer,
                 size: 10
             },
             line: {
-                color: 'rgb(255,188,5)',
+                color: colors.stunnerAuthServer,
                 width: 2
             }
         };
@@ -145,11 +151,11 @@
             type: 'lines+markers',
             name: 'l7mp/net-debug',
             marker: {
-                color: 'rgb(52,168,83)',
+                color: colors.netDebug,
                 size: 10
             },
             line: {
-                color: 'rgb(52,168,83)',
+                color: colors.netDebug,
                 width: 2
             }
         };
@@ -159,11 +165,11 @@
             type: 'lines+markers',
             name: 'l7mp/icetester',
             marker: {
-                color: 'rgb(168,168,168)',
+                color: colors.icetester,
                 size: 10
             },
             line: {
-                color: 'rgb(168,168,168)',
+                color: colors.icetester,
                 width: 2
             }
         };
