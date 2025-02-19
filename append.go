@@ -28,7 +28,7 @@ func readRepoNames(path string) ([]string, error) {
 }
 
 func queryPolls(repo string) (string, error) {
-	url := fmt.Sprintf("https://hub.docker.com/v2/repositories/l7mp/%s", repo)
+	url := fmt.Sprintf("https://hub.docker.com/v2/repositories/%s", repo)
 	res, err := http.Get(url)
 	if err != nil {
 		return "", err

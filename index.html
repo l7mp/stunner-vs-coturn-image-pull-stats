@@ -14,7 +14,7 @@
 	stunnerGatewayOperator: 'rgb(234,67,53)',
 	stunnerAuthServer: 'rgb(255,188,5)',
 	netDebug: 'rgb(52,168,83)',
-	icetester: 'rgb(168,168,168)',
+	coturn: 'rgb(168,168,168)',
     }
     function getDifferences(values) {
 	return values.slice(1).map((value, index) => value - values[index]);
@@ -24,7 +24,7 @@
     Plotly.d3.csv(csv_path, function(data) {
         var stunnerd = {
             x: data.map(row => row['date'] + "T12:00"),
-            y: getDifferences(data.map(row => row['stunnerd'])),
+            y: getDifferences(data.map(row => row['l7mp/stunnerd'])),
             type: 'bar',
             name: 'l7mp/stunnerd',
             marker: {
@@ -38,7 +38,7 @@
         };
         var stunnerGatewayOperator = {
             x: data.map(row => row['date'] + "T12:00"),
-            y: getDifferences(data.map(row => row['stunner-gateway-operator'])),
+            y: getDifferences(data.map(row => row['l7mp/stunner-gateway-operator'])),
             type: 'bar',
             name: 'l7mp/stunner-gateway-operator',
             marker: {
@@ -50,45 +50,17 @@
                 width: 2
             }
         };
-        var stunnerAuthServer = {
+        var coTurn = {
             x: data.map(row => row['date'] + "T12:00"),
-            y: getDifferences(data.map(row => row['stunner-auth-server'])),
+            y: getDifferences(data.map(row => row['coturn/coturn'])),
             type: 'bar',
-            name: 'l7mp/stunner-auth-server',
+            name: 'coturn/coturn',
             marker: {
-                color: colors.stunnerAuthServer,
+                color: colors.coturn,
                 size: 10
             },
             line: {
-                color: colors.stunnerAuthServer,
-                width: 2
-            }
-        };
-        var netDebug = {
-            x: data.map(row => row['date'] + "T12:00"),
-            y: getDifferences(data.map(row => row['net-debug'])),
-            type: 'bar',
-            name: 'l7mp/net-debug',
-            marker: {
-                color: colors.netDebug,
-                size: 10
-            },
-            line: {
-                color: colors.netDebug,
-                width: 2
-            }
-        };
-        var iceTester = {
-            x: data.map(row => row['date'] + "T12:00"),
-            y: getDifferences(data.map(row => row['icetester'])),
-            type: 'bar',
-            name: 'l7mp/icetester',
-            marker: {
-                color: colors.icetester,
-                size: 10
-            },
-            line: {
-                color: colors.icetester,
+                color: colors.coturn,
                 width: 2
             }
         };
@@ -96,7 +68,7 @@
             title: 'Image Pulls (Daily)',
         };
         Plotly.newPlot('daily',
-            [stunnerd, stunnerGatewayOperator, stunnerAuthServer, netDebug, iceTester],
+            [stunnerd, stunnerGatewayOperator, coTurn],
             layout, config
         );
     });
@@ -105,7 +77,7 @@
     Plotly.d3.csv(csv_path, function(data) {
         var stunnerd = {
             x: data.map(row => row['date'] + "T12:00"),
-            y: data.map(row => row['stunnerd']),
+            y: data.map(row => row['l7mp/stunnerd']),
             type: 'lines+markers',
             name: 'l7mp/stunnerd',
             marker: {
@@ -119,7 +91,7 @@
         };
         var stunnerGatewayOperator = {
             x: data.map(row => row['date'] + "T12:00"),
-            y: data.map(row => row['stunner-gateway-operator']),
+            y: data.map(row => row['l7mp/stunner-gateway-operator']),
             type: 'lines+markers',
             name: 'l7mp/stunner-gateway-operator',
             marker: {
@@ -131,45 +103,17 @@
                 width: 2
             }
         };
-        var stunnerAuthServer = {
+        var coTurn = {
             x: data.map(row => row['date'] + "T12:00"),
-            y: data.map(row => row['stunner-auth-server']),
+            y: data.map(row => row['coturn/coturn']),
             type: 'lines+markers',
-            name: 'l7mp/stunner-auth-server',
+            name: 'coturn/coturn',
             marker: {
-                color: colors.stunnerAuthServer,
+                color: colors.coturn,
                 size: 10
             },
             line: {
-                color: colors.stunnerAuthServer,
-                width: 2
-            }
-        };
-        var netDebug = {
-            x: data.map(row => row['date'] + "T12:00"),
-            y: data.map(row => row['net-debug']),
-            type: 'lines+markers',
-            name: 'l7mp/net-debug',
-            marker: {
-                color: colors.netDebug,
-                size: 10
-            },
-            line: {
-                color: colors.netDebug,
-                width: 2
-            }
-        };
-        var iceTester = {
-            x: data.map(row => row['date'] + "T12:00"),
-            y: data.map(row => row['icetester']),
-            type: 'lines+markers',
-            name: 'l7mp/icetester',
-            marker: {
-                color: colors.icetester,
-                size: 10
-            },
-            line: {
-                color: colors.icetester,
+                color: colors.coturn,
                 width: 2
             }
         };
@@ -177,7 +121,7 @@
             title: 'Image Pulls (Total)',
         };
         Plotly.newPlot('total',
-            [stunnerd, stunnerGatewayOperator, stunnerAuthServer, netDebug, iceTester],
+            [stunnerd, stunnerGatewayOperator, coTurn],
             layout, config
         );
     });
